@@ -8,10 +8,10 @@ if os.geteuid() != 0:
 host_ip = '172.31.1.4' #input('Enter the Proxy Host address: ')
 host_port = '8080' # input('Enter the Proxy host port: ')
 
-username = 'lit2017007' #input('Enter the username: ')
-password_unhexed = '9044@Shiv'  #getpass.getpass(prompt='Enter the password: ')
+username = 'usesrname' #input('Enter the username: ')
+password_unhexed = 'password'  #getpass.getpass(prompt='Enter the password: ')
 
-pc_username ='fl4shi3r' #input('Enter the pc username: ')
+pc_username ='pc_username' #input('Enter the pc username: ')
 
 def password_hex(password):
     hex_password = []
