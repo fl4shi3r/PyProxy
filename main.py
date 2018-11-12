@@ -1,4 +1,4 @@
-import re, os, environment, getpass, apt, npm, git
+import re, os, environment, getpass, apt, npm, git, gsetting, bash
 
 
 
@@ -11,7 +11,7 @@ host_port = '8080' # input('Enter the Proxy host port: ')
 username = 'usesrname' #input('Enter the username: ')
 password_unhexed = 'password'  #getpass.getpass(prompt='Enter the password: ')
 
-pc_username ='pc_username' #input('Enter the pc username: ')
+pc_username ='fl4shi3r' #input('Enter the pc username: ')
 
 def password_hex(password):
     hex_password = []
@@ -35,3 +35,10 @@ password = password_hex(password_unhexed)
 
 # git.set_proxy(username, password, host_ip, host_port, pc_username )
 # git.unset_proxy(pc_username)
+
+# gsetting.set_proxy(username, password, host_ip, host_port, pc_username)
+# gsetting.unset_proxy(pc_username)
+
+# bash.set_proxy(username, password, host_ip, host_port, pc_username)
+# bash.unset_proxy(pc_username)
+
