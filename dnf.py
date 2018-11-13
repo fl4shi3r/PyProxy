@@ -2,9 +2,8 @@ import os
 
 
 def set_proxy(username, password, host_ip, host_port ):
-    if(os.path.isdir('/etc/dnf')): #returns false
-        pass
-    else:
+    check = os.path.isdir('/etc/dnf')
+    if check == True :
         file_temp = open('/etc/dnf/dnf.conf_temp', 'w+')
         file_ob = open('/etc/dnf/dnf.conf', 'r')
         for line in file_ob.readlines():
@@ -22,9 +21,8 @@ def set_proxy(username, password, host_ip, host_port ):
             os.rename('/etc/dnf/dnf.conf_temp', '/etc/dnf/dnf.conf')
 
 def unset_proxy():
-    if(os.path.isdir('/etc/dnf')): #returns false
-        pass
-    else:
+    check = os.path.isdir('/etc/dnf')
+    if check == True :
         file_temp = open('/etc/dnf/dnf.conf_temp', 'w+')
         file_ob = open('/etc/dnf/dnf.conf', 'r')
         for line in file_ob.readlines():
