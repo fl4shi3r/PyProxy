@@ -25,24 +25,24 @@ if choice == '1':
     
     pc_username = input('Enter the pc username: ')
     
-    environment.set_proxy(username,password , host_ip,host_port) 
-    apt.set_proxy(username, password, host_ip, host_port)
-    npm.set_proxy( username, password, host_ip, host_port, pc_username)
-    git.set_proxy(username, password, host_ip, host_port, pc_username )
+    # environment.set_proxy(username,password , host_ip,host_port) 
+    # apt.set_proxy(username, password, host_ip, host_port)
+    # npm.set_proxy( username, password, host_ip, host_port, pc_username)
+    # git.set_proxy(username, password, host_ip, host_port, pc_username )
     gsetting.set_proxy(username, password, host_ip, host_port, pc_username)
-    bash.set_proxy(username, password, host_ip, host_port, pc_username)
-    dnf.set_proxy(username, password, host_ip, host_port)
+    # bash.set_proxy(username, password, host_ip, host_port, pc_username)
+    # dnf.set_proxy(username, password, host_ip, host_port)
 
 elif choice == '2':
     pc_username = input('Enter the pc username: ')
 
-    environment.unset_proxy() 
-    apt.unset_proxy()
-    npm.unset_proxy(pc_username)
-    git.unset_proxy(pc_username)
+    # environment.unset_proxy() 
+    # apt.unset_proxy()
+    # npm.unset_proxy(pc_username)
+    # git.unset_proxy(pc_username)
     gsetting.unset_proxy(pc_username)
-    bash.unset_proxy(pc_username)
-    dnf.unset_proxy()
+    # bash.unset_proxy(pc_username)
+    # dnf.unset_proxy()
 else:
     print("Try again with correct option")
 
