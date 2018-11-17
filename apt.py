@@ -13,11 +13,11 @@ def set_proxy(host_ip, host_port, auth_choice, pc_username, username, password):
             else:
                 file_temp.write(line)
         if auth_choice == 'yes':
-            file_temp.write("\n" + 'Acquire::http::proxy \'http://'+ username + ':'+ password + '@' + host_ip +':' +  host_port + '/\';'+ '\n')
+            file_temp.write('Acquire::http::proxy \'http://'+ username + ':'+ password + '@' + host_ip +':' +  host_port + '/\';'+ '\n')
             file_temp.write('Acquire::https::proxy \'http://'+ username + ':'+ password + '@' + host_ip + ':' + host_port + '/\';'+ '\n')
             file_temp.write('Acquire::ftp::proxy \'ftp://'+ username + ':'+ password + '@' + host_ip + ':' + host_port + '/\';' + '\n')        
         elif auth_choice == 'no':
-            file_temp.write("\n" + 'Acquire::http::proxy \'http://' + host_ip +':' +  host_port + '/\';'+ '\n')
+            file_temp.write('Acquire::http::proxy \'http://' + host_ip +':' +  host_port + '/\';'+ '\n')
             file_temp.write('Acquire::https::proxy \'http://' + host_ip + ':' + host_port + '/\';'+ '\n')
             file_temp.write('Acquire::ftp::proxy \'ftp://' + host_ip + ':' + host_port + '/\';' + '\n')
         file_ob.close()

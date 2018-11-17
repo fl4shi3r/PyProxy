@@ -9,14 +9,10 @@ def set_proxy(host_ip, host_port, auth_choice, pc_username,  username, password)
     os.system('sudo -u ' + pc_username + ' gsettings set org.gnome.system.proxy.ftp host ' + host_ip)
     os.system('sudo -u ' + pc_username + ' gsettings set org.gnome.system.proxy.ftp port ' + host_port)
     os.system('sudo -u ' + pc_username + ' gsettings set org.gnome.system.proxy.http enabled true' )
-    if auth_choice == 'yes':
-        os.system('sudo -u ' + pc_username + ' gsettings set org.gnome.system.proxy.http use-authentication true' )
-        os.system('sudo -u ' + pc_username + ' gsettings set org.gnome.system.proxy.http authentication-user ' + username )
-        os.system('sudo -u ' + pc_username + ' gsettings set org.gnome.system.proxy.http authentication-password ' + password)
-    elif auth_choice == 'no':
-        os.system('sudo -u ' + pc_username + ' gsettings set org.gnome.system.proxy.http use-authentication false')
-        os.system('sudo -u ' + pc_username + ' gsettings set org.gnome.system.proxy.http authentication-user ""')
-        os.system('sudo -u ' + pc_username + ' gsettings set org.gnome.system.proxy.http authentication-password ""')
+    os.system('sudo -u ' + pc_username + ' gsettings set org.gnome.system.proxy.http use-authentication true' )
+    os.system('sudo -u ' + pc_username + ' gsettings set org.gnome.system.proxy.http authentication-user "' + username + '"' )
+    os.system('sudo -u ' + pc_username + ' gsettings set org.gnome.system.proxy.http authentication-password "' + password + '"')
+
 
 
 def unset_proxy(pc_username):

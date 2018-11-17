@@ -20,7 +20,8 @@ if choice == '1':
     host_port = input('Enter the Proxy host port: ')
 
     pc_username = input('Enter the pc username: ')
-
+    username = ''
+    password = ''
     auth_choice = (input('Is authentication required in your college/organization (yes/no): ')).lower()
     if auth_choice == 'yes' :
         username = input('Enter the username: ')
@@ -32,13 +33,13 @@ if choice == '1':
         print('Try again with correct option')
         exit(1)   
     
-    environment.set_proxy(host_ip, host_port, auth_choice, pc_username, username='', password='') 
-    apt.set_proxy(host_ip, host_port, auth_choice,pc_username, username='', password='')
-    npm.set_proxy( host_ip, host_port, auth_choice,pc_username, username='', password='')
-    git.set_proxy(host_ip, host_port, auth_choice, pc_username,username='', password='' )
-    gsetting.set_proxy(host_ip, host_port, auth_choice,pc_username, username='', password='')
-    bash.set_proxy(host_ip, host_port, auth_choice,pc_username, username='', password='')
-    dnf.set_proxy(host_ip, host_port, auth_choice,pc_username, username='', password='')
+    environment.set_proxy(host_ip, host_port, auth_choice, pc_username, username, password) 
+    apt.set_proxy(host_ip, host_port, auth_choice,pc_username, username, password)
+    npm.set_proxy( host_ip, host_port, auth_choice,pc_username, username, password)
+    git.set_proxy(host_ip, host_port, auth_choice, pc_username,username, password )
+    gsetting.set_proxy(host_ip, host_port, auth_choice,pc_username, username, password)
+    bash.set_proxy(host_ip, host_port, auth_choice,pc_username, username, password)
+    dnf.set_proxy(host_ip, host_port, auth_choice,pc_username, username, password)
 
 elif choice == '2':
     pc_username = input('Enter the pc username: ')
