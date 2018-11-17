@@ -14,24 +14,31 @@ def password_hex(password):
             hex_password.append(i)
     return ''.join(hex_password)
 
-choice = input('1.set proxy\n2.unset proxy\nEnter your choice(1/2): ')
+choice = input('1.set proxy\n2.unset proxy\nEnter your choice (1/2): ')
 if choice == '1':
     host_ip = input('Enter the Proxy Host address: ')
     host_port = input('Enter the Proxy host port: ')
 
-    username = input('Enter the username: ')
-    password_unhexed = getpass.getpass(prompt='Enter the password: ')
-    password = password_hex(password_unhexed)
-    
     pc_username = input('Enter the pc username: ')
+
+    auth_choice = (input('Is authentication required in your college/organization (yes/no): ')).lower()
+    if auth_choice == 'yes' :
+        username = input('Enter the username: ')
+        password_unhexed = getpass.getpass(prompt='Enter the password: ')
+        password = password_hex(password_unhexed)
+    elif auth_choice == 'no':
+        pass
+    else:
+        print('Try again with correct option')
+        exit(1)   
     
-    environment.set_proxy(username,password , host_ip,host_port) 
-    apt.set_proxy(username, password, host_ip, host_port)
-    npm.set_proxy( username, password, host_ip, host_port, pc_username)
-    git.set_proxy(username, password, host_ip, host_port, pc_username )
-    gsetting.set_proxy(username, password, host_ip, host_port, pc_username)
-    bash.set_proxy(username, password, host_ip, host_port, pc_username)
-    dnf.set_proxy(username, password, host_ip, host_port)
+    environment.set_proxy(host_ip, host_port, auth_choice, pc_username, username='', password='') 
+    apt.set_proxy(host_ip, host_port, auth_choice,pc_username, username='', password='')
+    npm.set_proxy( host_ip, host_port, auth_choice,pc_username, username='', password='')
+    git.set_proxy(host_ip, host_port, auth_choice, pc_username,username='', password='' )
+    gsetting.set_proxy(host_ip, host_port, auth_choice,pc_username, username='', password='')
+    bash.set_proxy(host_ip, host_port, auth_choice,pc_username, username='', password='')
+    dnf.set_proxy(host_ip, host_port, auth_choice,pc_username, username='', password='')
 
 elif choice == '2':
     pc_username = input('Enter the pc username: ')
