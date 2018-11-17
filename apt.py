@@ -2,7 +2,7 @@
 import os
 
 
-def set_proxy(username, password, host_ip, host_port):
+def set_proxy(host_ip, host_port, auth_choice, pc_username, username, password):
     check = os.path.isdir('/etc/apt')
     if check == True :
         file_temp = open('/etc/apt/apt.conf_temp', 'w+')
@@ -12,10 +12,14 @@ def set_proxy(username, password, host_ip, host_port):
                 continue    
             else:
                 file_temp.write(line)
-
-        file_temp.write("\n" + 'Acquire::http::proxy \'http://'+ username + ':'+ password + '@' + host_ip +':' +  host_port + '/\';'+ '\n')
-        file_temp.write('Acquire::https::proxy \'http://'+ username + ':'+ password + '@' + host_ip + ':' + host_port + '/\';'+ '\n')
-        file_temp.write('Acquire::ftp::proxy \'ftp://'+ username + ':'+ password + '@' + host_ip + ':' + host_port + '/\';' + '\n')        
+        if auth_choice == 'yes':
+            file_temp.write("\n" + 'Acquire::http::proxy \'http://'+ username + ':'+ password + '@' + host_ip +':' +  host_port + '/\';'+ '\n')
+            file_temp.write('Acquire::https::proxy \'http://'+ username + ':'+ password + '@' + host_ip + ':' + host_port + '/\';'+ '\n')
+            file_temp.write('Acquire::ftp::proxy \'ftp://'+ username + ':'+ password + '@' + host_ip + ':' + host_port + '/\';' + '\n')        
+        elif auth_choice == 'no':
+            file_temp.write("\n" + 'Acquire::http::proxy \'http://' + host_ip +':' +  host_port + '/\';'+ '\n')
+            file_temp.write('Acquire::https::proxy \'http://' + host_ip + ':' + host_port + '/\';'+ '\n')
+            file_temp.write('Acquire::ftp::proxy \'ftp://' + host_ip + ':' + host_port + '/\';' + '\n')
         file_ob.close()
         file_temp.close()
         os.remove('/etc/apt/apt.conf')
