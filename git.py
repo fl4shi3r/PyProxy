@@ -1,7 +1,7 @@
 import os 
 
 
-def set_proxy(username, password, host_ip, host_port, pc_username):
+def set_proxy(host_ip, host_port, auth_choice, pc_username, username, password):
     result = os.system('which git > /dev/null')
     if result == 0 :
         if pc_username == 'root' :
@@ -13,9 +13,13 @@ def set_proxy(username, password, host_ip, host_port, pc_username):
                     continue    
                 else:
                     file_temp.write(line)
-
-            file_temp.write('\n[http]\n\tproxy = http://'+ username + ':'+ password + '@' + host_ip +':' +  host_port + '\n')
-            file_temp.write('[https]\n\tproxy=http://'+ username + ':'+ password + '@' + host_ip + ':' + host_port + '\n' )
+            if auth_choice == 'yes':
+                file_temp.write('\n[http]\n\tproxy = http://'+ username + ':'+ password + '@' + host_ip +':' +  host_port + '\n')
+                file_temp.write('[https]\n\tproxy=http://'+ username + ':'+ password + '@' + host_ip + ':' + host_port + '\n' )
+            elif auth_choice == 'no':
+                file_temp.write('\n[http]\n\tproxy = http://' + host_ip +':' +  host_port + '\n')
+                file_temp.write('[https]\n\tproxy=http://' + host_ip + ':' + host_port + '\n' )
+                
             file_ob.close()
             file_temp.close()
             os.remove(file_name)
@@ -29,9 +33,12 @@ def set_proxy(username, password, host_ip, host_port, pc_username):
                     continue    
                 else:
                     file_temp.write(line)
-
-            file_temp.write('\n[http]\n\tproxy = http://'+ username + ':'+ password + '@' + host_ip +':' +  host_port + '\n')
-            file_temp.write('[https]\n\tproxy=http://'+ username + ':'+ password + '@' + host_ip + ':' + host_port + '\n' )
+            if auth_choice == 'yes':
+                file_temp.write('\n[http]\n\tproxy = http://'+ username + ':'+ password + '@' + host_ip +':' +  host_port + '\n')
+                file_temp.write('[https]\n\tproxy=http://'+ username + ':'+ password + '@' + host_ip + ':' + host_port + '\n' )
+            elif auth_choice == 'no':
+                file_temp.write('\n[http]\n\tproxy = http://' + host_ip +':' +  host_port + '\n')
+                file_temp.write('[https]\n\tproxy=http://' + host_ip + ':' + host_port + '\n' )
             file_ob.close()
             file_temp.close()
             os.remove(file_name)
