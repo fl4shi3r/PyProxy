@@ -1,6 +1,6 @@
 import os
 
-def set_proxy(username, password, host_ip, host_port, pc_username):
+def set_proxy(host_ip, host_port, auth_choice, pc_username,  username, password):
     os.system('sudo -u ' + pc_username + ' gsettings set org.gnome.system.proxy mode "manual"')
     os.system('sudo -u ' + pc_username + ' gsettings set org.gnome.system.proxy.http host ' + host_ip)
     os.system('sudo -u ' + pc_username + ' gsettings set org.gnome.system.proxy.http port ' + host_port)
@@ -9,9 +9,14 @@ def set_proxy(username, password, host_ip, host_port, pc_username):
     os.system('sudo -u ' + pc_username + ' gsettings set org.gnome.system.proxy.ftp host ' + host_ip)
     os.system('sudo -u ' + pc_username + ' gsettings set org.gnome.system.proxy.ftp port ' + host_port)
     os.system('sudo -u ' + pc_username + ' gsettings set org.gnome.system.proxy.http enabled true' )
-    os.system('sudo -u ' + pc_username + ' gsettings set org.gnome.system.proxy.http use-authentication true' )
-    os.system('sudo -u ' + pc_username + ' gsettings set org.gnome.system.proxy.http authentication-user ' + username )
-    os.system('sudo -u ' + pc_username + ' gsettings set org.gnome.system.proxy.http authentication-password ' + password)
+    if auth_choice == 'yes':
+        os.system('sudo -u ' + pc_username + ' gsettings set org.gnome.system.proxy.http use-authentication true' )
+        os.system('sudo -u ' + pc_username + ' gsettings set org.gnome.system.proxy.http authentication-user ' + username )
+        os.system('sudo -u ' + pc_username + ' gsettings set org.gnome.system.proxy.http authentication-password ' + password)
+    elif auth_choice == 'no':
+        os.system('sudo -u ' + pc_username + ' gsettings set org.gnome.system.proxy.http use-authentication false')
+        os.system('sudo -u ' + pc_username + ' gsettings set org.gnome.system.proxy.http authentication-user ""')
+        os.system('sudo -u ' + pc_username + ' gsettings set org.gnome.system.proxy.http authentication-password ""')
 
 
 def unset_proxy(pc_username):
