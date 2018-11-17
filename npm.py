@@ -1,7 +1,7 @@
 import getpass, os
 
 
-def set_proxy(username, password, host_ip, host_port, pc_username):
+def set_proxy(host_ip, host_port, auth_choice,pc_username,  username, password):
     
     
     # proxy for root user
@@ -14,9 +14,12 @@ def set_proxy(username, password, host_ip, host_port, pc_username):
                 continue    
             else:
                 file_temp.write(line)
-        
-        file_temp.write('https-proxy=http://'+ username + ':'+ password + '@' + host_ip + ':' + host_port + '\n')
-        file_temp.write('proxy=http://'+ username + ':'+ password + '@' + host_ip + ':' + host_port  + '\n')        
+        if auth_choice == 'yes':
+            file_temp.write('https-proxy=http://'+ username + ':'+ password + '@' + host_ip + ':' + host_port + '\n')
+            file_temp.write('proxy=http://'+ username + ':'+ password + '@' + host_ip + ':' + host_port  + '\n')
+        elif auth_choice == 'no':
+            file_temp.write('https-proxy=http://' + host_ip + ':' + host_port + '\n')
+            file_temp.write('proxy=http://' + host_ip + ':' + host_port  + '\n')
         file_ob.close()
         file_temp.close()
         os.remove('/root/.npmrc')
