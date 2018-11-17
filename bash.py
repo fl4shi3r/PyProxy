@@ -1,7 +1,7 @@
 import os
 
 
-def set_proxy(username, password, host_ip, host_port, pc_username):
+def set_proxy(host_ip, host_port, auth_choice, pc_username, username, password):
     if pc_username == 'root':
         file_name = '/root/.bashrc'
         file_temp = open(file_name + '_temp', 'w+')
@@ -12,10 +12,14 @@ def set_proxy(username, password, host_ip, host_port, pc_username):
                 continue    
             else:
                 file_temp.write(line)
-
-        file_temp.write("\n" + 'http_proxy=\'http://'+ username + ':'+ password + '@' + host_ip +':' +  host_port + '\''+ '\n')
-        file_temp.write('https_proxy=\'http://'+ username + ':'+ password + '@' + host_ip + ':' + host_port + '\''+ '\n')
-        file_temp.write('ftp_proxy=\'ftp://'+ username + ':'+ password + '@' + host_ip + ':' + host_port + '\'' + '\n')        
+        if auth_choice == 'yes':
+            file_temp.write("\n" + 'http_proxy=\'http://'+ username + ':'+ password + '@' + host_ip +':' +  host_port + '\''+ '\n')
+            file_temp.write('https_proxy=\'http://'+ username + ':'+ password + '@' + host_ip + ':' + host_port + '\''+ '\n')
+            file_temp.write('ftp_proxy=\'ftp://'+ username + ':'+ password + '@' + host_ip + ':' + host_port + '\'' + '\n')        
+        elif auth_choice == 'no':
+            file_temp.write("\n" + 'http_proxy=\'http://' + host_ip +':' +  host_port + '\''+ '\n')
+            file_temp.write('https_proxy=\'http://' + host_ip + ':' + host_port + '\''+ '\n')
+            file_temp.write('ftp_proxy=\'ftp://' + host_ip + ':' + host_port + '\'' + '\n') 
         file_ob.close()
         file_temp.close()
         os.remove(file_name)
@@ -29,10 +33,14 @@ def set_proxy(username, password, host_ip, host_port, pc_username):
                 continue    
             else:
                 file_temp.write(line)
-
-        file_temp.write("\n" + 'http_proxy=\'http://'+ username + ':'+ password + '@' + host_ip +':' +  host_port + '\''+ '\n')
-        file_temp.write('https_proxy=\'http://'+ username + ':'+ password + '@' + host_ip + ':' + host_port + '\''+ '\n')
-        file_temp.write('ftp_proxy=\'ftp://'+ username + ':'+ password + '@' + host_ip + ':' + host_port + '\'' + '\n')        
+        if auth_choice == 'yes':
+            file_temp.write("\n" + 'http_proxy=\'http://'+ username + ':'+ password + '@' + host_ip +':' +  host_port + '\''+ '\n')
+            file_temp.write('https_proxy=\'http://'+ username + ':'+ password + '@' + host_ip + ':' + host_port + '\''+ '\n')
+            file_temp.write('ftp_proxy=\'ftp://'+ username + ':'+ password + '@' + host_ip + ':' + host_port + '\'' + '\n')        
+        elif auth_choice == 'no':
+            file_temp.write("\n" + 'http_proxy=\'http://' + host_ip +':' +  host_port + '\''+ '\n')
+            file_temp.write('https_proxy=\'http://' + host_ip + ':' + host_port + '\''+ '\n')
+            file_temp.write('ftp_proxy=\'ftp://' + host_ip + ':' + host_port + '\'' + '\n')
         file_ob.close()
         file_temp.close()
         os.remove(file_name)
