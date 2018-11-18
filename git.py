@@ -13,7 +13,7 @@ def set_proxy(host_ip, host_port, auth_choice, pc_username, username, password):
             else:
                 file_ob = open(file_name, 'w+')
             for line in file_ob.readlines():
-                if 'http' in line or 'https' in line or 'proxy' in line:
+                if 'http' in line or 'https' in line or 'proxy' in line or line.isspace():
                     continue    
                 else:
                     file_temp.write(line)
@@ -36,7 +36,7 @@ def set_proxy(host_ip, host_port, auth_choice, pc_username, username, password):
             else:
                 file_ob = open(file_name, 'w+')
             for line in file_ob.readlines():
-                if 'http' in line or 'https' in line or 'proxy' in line:
+                if 'http' in line or 'https' in line or 'proxy' in line or line.isspace():
                     continue    
                 else:
                     file_temp.write(line)
