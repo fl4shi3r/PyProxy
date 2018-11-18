@@ -7,7 +7,10 @@ def set_proxy(host_ip, host_port, auth_choice, pc_username, username, password):
         if pc_username == 'root' :
             file_name = '/root/.gitconfig'
             file_temp = open(file_name + '_temp', 'w+')
-            file_ob = open(file_name, 'w+')
+            if os.path.exists(file_name):
+                file_ob = open(file_name, 'r')
+            else:
+                file_ob = open(file_name, 'w+')
             for line in file_ob.readlines():
                 if 'http' in line or 'https' in line or 'proxy' in line:
                     continue    
@@ -27,7 +30,10 @@ def set_proxy(host_ip, host_port, auth_choice, pc_username, username, password):
         else:
             file_name = '/home/'+ pc_username + '/.gitconfig'
             file_temp = open(file_name + '_temp', 'w+')
-            file_ob = open(file_name, 'w+')
+            if os.path.exists(file_name):
+                file_ob = open(file_name, 'r')
+            else:
+                file_ob = open(file_name, 'w+')
             for line in file_ob.readlines():
                 if 'http' in line or 'https' in line or 'proxy' in line:
                     continue    
