@@ -3,7 +3,7 @@ import re, os, environment, getpass, apt, npm, git, gsetting, bash, dnf
 
 
 if os.geteuid() != 0:
-    exit('You have to root privileges to run this script.\nPlease try again, this time using "sudo".\nExiting.')
+    exit('You need root privileges to run this script.\nPlease try again, this time using "sudo".\nExiting.')
 
 def password_hex(password):
     hex_password = []
@@ -14,8 +14,8 @@ def password_hex(password):
             hex_password.append(i)
     return ''.join(hex_password)
 
-choice = input('1.set proxy\n2.unset proxy\nEnter your choice (1/2): ')
-if choice == '1':
+choice = int(input('1.set proxy\n2.unset proxy\nEnter your choice (1/2): '))
+if choice == 1:
     host_ip = input('Enter the Proxy Host address: ')
     host_port = input('Enter the Proxy host port: ')
 
@@ -41,7 +41,7 @@ if choice == '1':
     bash.set_proxy(host_ip, host_port, auth_choice,pc_username, username, password)
     dnf.set_proxy(host_ip, host_port, auth_choice,pc_username, username, password)
 
-elif choice == '2':
+elif choice == 2:
     pc_username = input('Enter the pc username: ')
 
     environment.unset_proxy() 
