@@ -6,7 +6,11 @@ def set_proxy(host_ip, host_port, auth_choice, pc_username, username, password):
     check = os.path.isdir('/etc/apt')
     if check == True :
         file_temp = open('/etc/apt/apt.conf_temp', 'w+')
-        file_ob = open('/etc/apt/apt.conf', 'w+')
+        if os.path.exists('/etc/apt/apt.conf'):
+            file_ob = open('/etc/apt/apt.conf', 'r')
+        else:
+            file_ob = open('/etc/apt/apt.conf', 'w+')
+
         for line in file_ob.readlines():
             if 'Acquire::http::proxy' in line or 'Acquire::https::proxy' in line or 'Acquire::ftp::proxy' in line or line.isspace():
                 continue    
