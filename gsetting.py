@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 import os
 
 def set_proxy(host_ip, host_port, auth_choice, pc_username,  username, password):

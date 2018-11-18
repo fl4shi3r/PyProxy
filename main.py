@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 import re, os, environment, getpass, apt, npm, git, gsetting, bash, dnf
 
 

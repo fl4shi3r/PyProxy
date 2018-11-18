@@ -1,4 +1,4 @@
-# /etc/apt/apt.conf
+#!/usr/bin/python3
 import os
 
 
