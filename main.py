@@ -14,7 +14,7 @@ if sys.version_info.major >= 3:
             else:
                 hex_password.append(i)
         return ''.join(hex_password)
-
+    print('\nCheck this link "https://github.com/fl4shi3r/PyProxy" for new features:):):):)\n')
     choice = int(input('1.set proxy\n2.unset proxy\nEnter your choice (1/2): '))
     if choice == 1:
         import environment, apt, npm, git, gsetting, bash, dnf
@@ -56,6 +56,7 @@ if sys.version_info.major >= 3:
         dnf.unset_proxy()
     else:
         print("Try again with correct option")
+    
 
     
 else:
