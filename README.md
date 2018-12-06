@@ -4,8 +4,9 @@
 
 #### Usage:
 * Run the following command in terminal
-* First clone the repo, then 
+
 ```bash
+git clone https://github.com/fl4shi3r/PyProxy.git
 cd PyProxy
 sudo python3 run.py
 ```
