@@ -2,7 +2,7 @@
 
 ### Proxy Setting Tool
 
-####Usage:
+#### Usage:
 *Run the following command in terminal
 *First clone the repo, then 
 ```bash
