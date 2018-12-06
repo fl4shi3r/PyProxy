@@ -3,7 +3,7 @@
 ### Proxy Setting Tool
 
 #### Usage:
-* Run the following command in terminal
+* Run the following commands in terminal
 
 ```bash
 git clone https://github.com/fl4shi3r/PyProxy.git
