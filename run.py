@@ -51,7 +51,7 @@ if sys.version_info.major >= 3:
     elif choice == 2:
         import environment, apt, npm, git, gsetting, bash, dnf
         pc_username = input('Enter the pc username: ')
-        if os.path.isdir('/home/'+pc_username):
+        if os.path.isdir('/home/'+pc_username) or pc_username == 'root':
             environment.unset_proxy()
             apt.unset_proxy()
             npm.unset_proxy(pc_username)
