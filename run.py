@@ -89,8 +89,13 @@ def unset_proxy():
     file = 'Saved/proxy.txt'
     f = open(file, 'r')
     x = f.readlines()
-    pc_username = x[2][:-1]
-    print(pc_username)
+    if len(x) == 0:
+        pc_username = input('Enter username of Your PC')
+    else:
+        pc_username = x[2][:-1]
+        changeOrNot = input('Do you want to reset the proxy of user ' + pc_username + '? (y/n)')
+        if(changeOrNot == 'n'):
+            pc_username = input('Enter username of Your PC ')
     if (os.path.isdir('/home/'+pc_username) or pc_username == 'root'):
         environment.unset_proxy()
         apt.unset_proxy()
@@ -100,6 +105,8 @@ def unset_proxy():
         bash.unset_proxy(pc_username)
         dnf.unset_proxy()
         os.system("su -c \"echo 3 >'/proc/sys/vm/drop_caches' && swapoff -a && swapon -a\"")
+        print('Done')
+
         # reboot_choice = (input('Reboot is required to apply the changes\nDo you want to reboot your system(yes/no)')).lower()
         # if reboot_choice == "yes":
         #     print('Rebooting your system')
