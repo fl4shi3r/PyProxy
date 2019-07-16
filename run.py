@@ -101,7 +101,7 @@ def unset_proxy():
         apt.unset_proxy()
         npm.unset_proxy(pc_username)
         git.unset_proxy(pc_username)
-        # gsetting.unset_proxy(pc_username)
+        gsetting.unset_proxy(pc_username)
         bash.unset_proxy(pc_username)
         dnf.unset_proxy()
         os.system("su -c \"echo 3 >'/proc/sys/vm/drop_caches' && swapoff -a && swapon -a\"")
