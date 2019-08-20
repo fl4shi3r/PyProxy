@@ -1,6 +1,6 @@
 ## PyProxy
 
-### Proxy Setting Tool
+### Proxy Setting Tool for debian OS
 
 #### Usage:
 * Run the following commands in terminal
